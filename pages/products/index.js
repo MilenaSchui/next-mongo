@@ -30,6 +30,19 @@ const Products = () => {
     getProducts();
   }, [categoryFilter]);
 
+  async function handleDelete(id){
+    try{
+      const response = await fetch(`/api/products/${id}`, {method: "DELETE"})
+      if(response.ok){
+        alert("product deleted")
+      } else {
+        alert("product not found")
+      }
+      } catch (error) {
+        alert(error.message);
+      }
+  }
+  
   return (
     <>
       <Head>
@@ -58,6 +71,7 @@ const Products = () => {
             return (
               <li key={product._id}>
                 <Link href={`/products/${product._id}`}>{product.name}</Link>
+                <button onClick={()=>handleDelete(product._id)}>delete</button>
               </li>
             );
           })}
