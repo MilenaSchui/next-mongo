@@ -1,5 +1,4 @@
 import { Product } from "../_db/models/Products";
-import { Model } from "mongoose";
 import connectDB from "../_db/connect-db";
 
 async function handler(req, res) {
